@@ -2,7 +2,7 @@
   "name": "marked-mermaid-element",
   "version": "1.0.0",
   "description": "Element wrapper for the marked library, with added support for Mermaid.js",
-  "private": true,
+  "private": false,
   "authors": [
     "Zachary Marion"
   ],
