@@ -59,7 +59,7 @@ Install from bower: `bower install --save marked-mermaid-element`
                   return '<div class="mermaid">'+code+'</div>';
               }
               else{
-                  return '<pre><code>'+code+'</code></pre>';
+                  return '<pre><code>'+require('highlight.js').highlightAuto(code).value+'</code></pre>';
               }
           };
           return renderer;
@@ -111,13 +111,12 @@ Install from bower: `bower install --save marked-mermaid-element`
         return;
       }
       this.$.content.innerHTML = marked(this.markdown, {
-        highlight: this._highlight.bind(this),
+        highlight: function (code) {
+          return require('highlight.js').highlightAuto(code).value;
+        },
         renderer: this.renderer
       });
       mermaid.init({noteMargin: 10}, ".mermaid");
-    },
-    _highlight: function(code, lang) {
-      return require('highlight.js').highlightAuto(code).value;
     },
     _unindent: function(text) {
       if (!text) return text;
