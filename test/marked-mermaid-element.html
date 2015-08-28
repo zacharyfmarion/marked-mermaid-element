@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>marked-element basic tests</title>
+  <title>marked-mermaid-element basic tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
@@ -20,31 +20,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <link rel="import" href="../../test-fixture/test-fixture.html">
   <link rel="import" href="../../polymer/polymer.html">
-  <link rel="import" href="../marked-element.html">
+  <link rel="import" href="../marked-mermaid-element.html">
 </head>
 <body>
 
   <test-fixture id="CamelCaseHTML">
     <template>
-      <marked-element>
+      <marked-mermaid-element>
         <script type="text/markdown">
 ```html
 <div camelCase></div>
 ```
         </script>
-      </marked-element>
+      </marked-mermaid-element>
     </template>
   </test-fixture>
 
   <test-fixture id="BadHTML">
     <template>
-      <marked-element>
+      <marked-mermaid-element>
         <script type="text/markdown">
 ```html
 <p><div></p></div>
 ```
         </script>
-      </marked-element>
+      </marked-mermaid-element>
     </template>
   </test-fixture>
 
@@ -62,7 +62,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       return span.innerHTML;
     }
 
-    suite('<marked-element>', function() {
+    suite('<marked-mermaid-element>', function() {
 
       suite('respsects camelCased HTML', function() {
         var markedElement;
