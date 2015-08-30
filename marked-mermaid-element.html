@@ -13,9 +13,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 Element wrapper for the [marked](https://github.com/chjj/marked) library with support for [mermaid.js](https://github.com/knsv/mermaid).
-`<marked-mermaid-element>`functions in the same way the Polymer's marked attribute functions, except it adds support for mermaid.js. For information on the syntax, visit their [website](http://knsv.github.io/mermaid/). You can declare a mermaid element by specifying language of a code block as 'sequenceDiagram' or 'graph'. For example:
+`<marked-mermaid-element>`functions in the same way the Polymer's marked attribute functions, except it adds support for mermaid.js. 
+For information on the syntax, visit their [website](http://knsv.github.io/mermaid/). You can declare a mermaid element by specifying
+language of a code block as 'sequenceDiagram', 'graph' or 'gantt'. For example:
 
-```sequenceDiagram
+```
 
 sequenceDiagram
     Alice->>John: Hello John, how are you?
@@ -30,7 +32,11 @@ Install from bower: `bower install --save marked-mermaid-element`
 @demo demo/index.html
 -->
 <dom-module id="marked-mermaid-element">
-
+  <style>
+    div.mermaid{
+      width: inherit !important;
+    }
+  </style>
   <template>
     <div id="content"></div>
   </template>
@@ -54,7 +60,7 @@ Install from bower: `bower install --save marked-mermaid-element`
         value: function(){
           var renderer = new marked.Renderer();
           renderer.code = function (code, language) {
-              if(code.match(/^sequenceDiagram/)||code.match(/^graph/)||language === 'sequenceDiagram' || language === 'graph'
+              if(code.match(/^sequenceDiagram/)||code.match(/^graph/)||code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'graph' || language === 'gantt'
                 && code !== ''){
                   return '<div class="mermaid">'+code+'</div>';
               }
